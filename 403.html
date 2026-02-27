@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>403 - Access Forbidden | Haproid</title>
+
+    <meta name="robots" content="noindex">
+    <meta name="description" content="Access denied. You do not have permission to view this page.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at top left, #1e293b, #020617);
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+
+            display: grid;
+            justify-content: center;
+            align-content: center;
+            position: relative;
+        }
+
+        /* Glow */
+        body::before {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            width: 300px;
+            height: 300px;
+            background: rgba(239, 68, 68, 0.85);
+            top: -100px;
+            left: -100px;
+            animation: float 6s infinite alternate ease-in-out;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 500px;
+            padding: 30px 25px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            animation: zoomIn 0.7s ease-out forwards;
+            transform: scale(0.7);
+            opacity: 0;
+        }
+
+        h1 {
+            font-size: clamp(60px, 18vw, 130px);
+            font-weight: 900;
+            color: #ef4444;
+            letter-spacing: 3px;
+            text-shadow: 0 8px 30px rgba(239, 68, 68, 0.4);
+        }
+
+        h2 {
+            margin-top: 10px;
+            font-size: clamp(18px, 5vw, 28px);
+            font-weight: 600;
+        }
+
+        p {
+            margin-top: 15px;
+            color: #cbd5e1;
+            font-size: clamp(14px, 4vw, 16px);
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, #ef4444, #b91c1c);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 🔁 Top Right Back Button */
+        #backBtn {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            padding: 8px 14px;
+            font-size: 13px;
+            background: #ef4444;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            z-index: 999;
+            transition: 0.3s;
+        }
+
+        #backBtn:hover {
+            background: #b91c1c;
+        }
+
+        /* Animations */
+        @keyframes zoomIn {
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(30px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 🔁 Smart Back Button -->
+    <button id="backBtn" onclick="smartBack()">Go Back</button>
+
+    <div class="container">
+        <h1>403</h1>
+        <h2>Access Forbidden</h2>
+        <p>
+            You don't have permission to access this page.
+            Please contact the administrator if you believe this is a mistake.
+        </p>
+        <a href="/" class="btn">Go Back Home</a>
+    </div>
+
+
+    <script src="/JS/access-control.js"></script>
+    <script src="/JS/page-protector.js"></script>
+    <script>
+        function smartBack() {
+
+            const params = new URLSearchParams(window.location.search);
+            const fromPage = params.get("from");
+
+            if (fromPage) {
+
+                // 🔥 Set temporary allow flag
+                sessionStorage.setItem("allowOnce", "true");
+
+                window.location.href = fromPage;
+                return;
+            }
+
+            window.location.href = "/";
+        }
+    </script>
+</body>
+
+</html>

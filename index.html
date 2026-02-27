@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haproid 403 - Smart Error Page</title>
+
+    <meta name="description" content="Modern 403 Forbidden page with smart return system and frontend access control.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Segoe UI, sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #ef4444, #7f1d1d);
+        }
+
+        header h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+        }
+
+        header p {
+            margin-top: 15px;
+            font-size: 18px;
+            max-width: 600px;
+            margin-inline: auto;
+        }
+
+        .section {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #ef4444;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #ef4444;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #b91c1c;
+        }
+
+        .demo-links a {
+            display: block;
+            margin: 10px 0;
+            color: #ef4444;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #020617;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #94a3b8;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Haproid 403 Smart Error Page</h1>
+        <p>
+            A modern, responsive, and smart 403 Forbidden page with intelligent return navigation and frontend access
+            control system.
+        </p>
+        <a href="403.html" class="btn">Live 403 Demo</a>
+    </header>
+
+    <section class="section">
+        <h2>🚀 Main Features</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Responsive Design</h3>
+                <p>Fully mobile-friendly layout using modern CSS techniques.</p>
+            </div>
+            <div class="card">
+                <h3>Smart Back System</h3>
+                <p>Automatically detects previous page and redirects safely.</p>
+            </div>
+            <div class="card">
+                <h3>Frontend Access Control</h3>
+                <p>Lightweight JS-based restricted page protection system.</p>
+            </div>
+            <div class="card">
+                <h3>Lightweight & Fast</h3>
+                <p>No external libraries. Clean and optimized code.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>❓ Why Use This 403 System?</h2>
+        <p>
+            This project is perfect for static websites, portfolio projects, GitHub Pages,
+            and frontend-only applications where you need a stylish 403 error page with
+            smart redirection and simple access control.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>💡 Frequently Asked Questions</h2>
+
+        <div class="card">
+            <h3>Is this secure?</h3>
+            <p>This is frontend-based protection. For real security, server-side authentication is recommended.</p>
+        </div>
+
+        <div class="card" style="margin-top:15px;">
+            <h3>Can I customize it?</h3>
+            <p>Yes. You can easily edit colors, animations, restricted paths, and redirect logic.</p>
+        </div>
+
+        <div class="card" style="margin-top:15px;">
+            <h3>Does it work on GitHub Pages?</h3>
+            <p>Yes. It works perfectly for static hosting platforms.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>🔗 Demo Links</h2>
+        <div class="demo-links">
+            <a href="403.html">403 Page Demo</a>
+            <a href="/admin/dashboard.html">Restricted Page Demo</a>
+            <a href="https://github.com/yourusername/403">GitHub Repository</a>
+        </div>
+    </section>
+
+
+    <footer>
+        © 2026 Haproid | Smart 403 Error Page Project
+    </footer>
+
+
+    <!-- <script>
+        (function () {
+
+            const MIN_WIDTH = screen.width - 100;
+            const MIN_HEIGHT = screen.height - 100;
+
+            function blockPage() {
+                document.body.innerHTML = "";
+                document.body.style.background = "#000";
+            }
+
+            function detectDevTools() {
+                const widthDiff = window.outerWidth - window.innerWidth;
+                const heightDiff = window.outerHeight - window.innerHeight;
+
+                if (widthDiff > 160 || heightDiff > 160) {
+                    blockPage();
+                }
+
+                if (window.innerWidth < MIN_WIDTH || window.innerHeight < MIN_HEIGHT) {
+                    blockPage();
+                }
+            }
+
+            // Disable right click
+            document.addEventListener("contextmenu", e => e.preventDefault());
+
+            // Disable common inspect shortcuts
+            document.addEventListener("keydown", function (e) {
+                if (
+                    e.key === "F12" ||
+                    (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) ||
+                    (e.ctrlKey && e.key.toUpperCase() === "U")
+                ) {
+                    e.preventDefault();
+                    blockPage();
+                }
+            });
+
+            // Check repeatedly
+            setInterval(detectDevTools, 1000);
+
+        })();
+    </script> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/JS/page-protector.js"></script>
+
+
+
+<!-- 
+    <script>
+(function(){
+
+    let blocked = false;
+
+    function createOverlay(){
+        if(blocked) return;
+        blocked = true;
+
+        const overlay = document.createElement("div");
+        overlay.id = "securityBlock";
+        overlay.style.position = "fixed";
+        overlay.style.top = "0";
+        overlay.style.left = "0";
+        overlay.style.width = "100vw";
+        overlay.style.height = "100vh";
+        overlay.style.background = "#000";
+        overlay.style.zIndex = "999999";
+        overlay.style.transition = "opacity 0.3s ease";
+        document.body.appendChild(overlay);
+
+        // 2 second me content remove
+        setTimeout(()=>{
+            document.body.innerHTML = "";
+            document.body.style.background = "#000";
+        },2000);
+    }
+
+    function detect(){
+        const widthDiff = window.outerWidth - window.innerWidth;
+        const heightDiff = window.outerHeight - window.innerHeight;
+
+        if(widthDiff > 160 || heightDiff > 160){
+            createOverlay();
+        }
+
+        if(window.innerWidth < screen.width - 120){
+            createOverlay();
+        }
+    }
+
+    // Disable right click
+    document.addEventListener("contextmenu", e => e.preventDefault());
+
+    // Disable inspect shortcuts
+    document.addEventListener("keydown", function(e){
+        if(
+            e.key === "F12" ||
+            (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key.toUpperCase())) ||
+            (e.ctrlKey && e.key.toUpperCase() === "U")
+        ){
+            e.preventDefault();
+            createOverlay();
+        }
+    });
+
+    // Continuous check
+    setInterval(detect, 1000);
+
+})();
+</script> -->
+</body>
+
+</html>
