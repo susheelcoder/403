@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auth Pages</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f4f7fb;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 430px;
+        }
+
+        .box {
+            background: #fff;
+            border-radius: 24px;
+            padding: 35px;
+            border: 1px solid #e5e7eb;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.05),
+                0 2px 10px rgba(0, 0, 0, 0.03);
+            display: none;
+        }
+
+        .box.active {
+            display: block;
+        }
+
+        .logo {
+            width: 65px;
+            height: 65px;
+            margin: auto;
+            margin-bottom: 22px;
+            border-radius: 18px;
+            background: #111827;
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 52px;
+            border-radius: 14px;
+            border: 1px solid #d1d5db;
+            background: #fafafa;
+            padding: 0 16px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-box input:focus {
+            border-color: #111827;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.08);
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #4b5563;
+        }
+
+        .remember input {
+            accent-color: #111827;
+        }
+
+        .link-btn {
+            background: none;
+            border: none;
+            color: #111827;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .link-btn:hover {
+            text-decoration: underline;
+        }
+
+        .main-btn {
+            width: 100%;
+            height: 52px;
+            border: none;
+            border-radius: 14px;
+            background: #111827;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .main-btn:hover {
+            background: #000;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+            color: #9ca3af;
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            position: absolute;
+            width: 38%;
+            height: 1px;
+            background: #e5e7eb;
+            top: 50%;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .google-btn {
+            width: 100%;
+            height: 52px;
+            border-radius: 14px;
+            border: 1px solid #d1d5db;
+            background: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .bottom-text {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .bottom-text button {
+            background: none;
+            border: none;
+            color: #111827;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        @media (max-width: 480px) {
+            .box {
+                padding: 28px 22px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .options {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+
+        .password-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-box span {
+            position: absolute;
+            right: 15px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        select {
+            width: 25%;
+            /* height: 52px;
+            border-radius: 14px;
+            border: 1px solid #d1d5db;
+            background: #fafafa;
+            padding: 0 16px;
+            font-size: 15px;
+            outline: none; */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- LOGIN -->
+        <div class="box active" id="loginPage">
+
+            <div class="logo">S</div>
+
+            <h1>Welcome Back</h1>
+
+            <p class="subtitle">
+                Login to continue your journey
+            </p>
+
+            <form>
+
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <div class="input-box">
+                        <input type="email" placeholder="Enter your email">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <div class="input-box">
+                        <!-- <input type="password" placeholder="Enter your password"> -->
+                        <div class="password-box">
+                            <input type="password" placeholder="Enter your password" id="loginPassword">
+                            <span onclick="togglePassword('loginPassword')">👁️</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="options">
+
+                    <label class="remember">
+                        <input type="checkbox">
+                        Remember me
+                    </label>
+
+                    <button type="button" class="link-btn" onclick="showPage('forgotPage')">
+                        Forgot Password?
+                    </button>
+
+                </div>
+
+                <button class="main-btn">
+                    Login
+                </button>
+
+            </form>
+
+            <div class="divider">
+                OR
+            </div>
+
+            <button class="google-btn">
+                Continue with Google
+            </button>
+
+            <div class="bottom-text">
+                Don’t have an account?
+                <button onclick="showPage('signupPage')">
+                    Create Account
+                </button>
+            </div>
+
+        </div>
+
+        <!-- SIGNUP -->
+        <div class="box" id="signupPage">
+
+            <div class="logo">S</div>
+
+            <h1>Create Account</h1>
+
+            <p class="subtitle">
+                Create your new account
+            </p>
+
+            <form>
+
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <div class="input-box">
+                        <input type="text" placeholder="Enter your name">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <div class="input-box">
+                        <input type="email" placeholder="Enter your email">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <div class="input-box">
+                        <input type="password" placeholder="Create password">
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Select Role</label>
+                    <div class="input-box">
+
+                        <select id="roleSelect">
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <button class="main-btn">
+                    Create Account
+                </button>
+
+            </form>
+
+            <div class="bottom-text">
+                Already have an account?
+                <button onclick="showPage('loginPage')">
+                    Login
+                </button>
+            </div>
+
+        </div>
+
+        <!-- FORGOT PASSWORD -->
+        <div class="box" id="forgotPage">
+
+            <div class="logo">S</div>
+
+            <h1>Forgot Password</h1>
+
+            <p class="subtitle">
+                Enter your email to reset password
+            </p>
+
+            <form>
+
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <div class="input-box">
+                        <input type="email" placeholder="Enter your email">
+                    </div>
+                </div>
+
+                <button class="main-btn">
+                    Send Reset Link
+                </button>
+
+            </form>
+
+            <div class="bottom-text">
+                Back to
+                <button onclick="showPage('loginPage')">
+                    Login
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function showPage(pageId) {
+
+            const pages = document.querySelectorAll(".box");
+
+            pages.forEach(page => {
+                page.classList.remove("active");
+            });
+
+            document.getElementById(pageId).classList.add("active");
+
+        }
+        function togglePassword(id) {
+
+            const input = document.getElementById(id);
+
+            if (input.type === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
+
+        }
+    </script>
+    <!-- HTML KE LAST ME ADD KARO -->
+
+    <script src="Assets/JS/users.js"></script>
+    <script src="Assets/JS/script.js"></script>
+
+</body>
+
+</html>
